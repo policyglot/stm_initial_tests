@@ -2,6 +2,9 @@
 Initial explorations on using the STM module in R so as to later add the stm feature into gensim
 
 ## Statistical Understanding
+
+ STM is an admixture with covariates in both mixture components.  Users provide a corpus of documents and a number of topics.  Each word in a document comes from exactly one topic and each document is represented by the proportion of its words that come from each of the K topics.  These proportions are found in the N (number of documents) by K (user specified number of topics) theta matrix.  Each of the K topics are represented as distributions over words.  The K-by-V (number of words in the vocabulary) matrix logbeta contains the natural log of the probability of seeing each word conditional on the topic.
+
 The approach used by the authors is a partially collapsed variational Expectation-Maximization algorithm which upon convergence gives us
 estimates of the model parameters. Our approach is to posit a hierarchical mixed membership model for an-
 alyzing topical content of documents, in which mixing weights are parameterized by
