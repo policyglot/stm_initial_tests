@@ -6,17 +6,11 @@ Initial explorations on using the STM module in R so as to later add the stm fea
  STM is an admixture with covariates in both mixture components.  Users provide a corpus of documents and a number of topics.  Each word in a document comes from exactly one topic and each document is represented by the proportion of its words that come from each of the K topics.  These proportions are found in the N (number of documents) by K (user specified number of topics) theta matrix.  Each of the K topics are represented as distributions over words.  The K-by-V (number of words in the vocabulary) matrix logbeta contains the natural log of the probability of seeing each word conditional on the topic.
 
 The approach used by the authors is a partially collapsed variational Expectation-Maximization algorithm which upon convergence gives us
-estimates of the model parameters. Our approach is to posit a hierarchical mixed membership model for an-
-alyzing topical content of documents, in which mixing weights are parameterized by
-observed covariates. In this model, topical prevalence and topical content are spec-
-ified as a simple generalized linear model on an arbitrary number of document-level
-covariates, such as news source and time of release, enabling researchers to introduce
-elements of the experimental design that informed document collection into the model,
-within a generally applicable framework.
+estimates of the model parameters. Our approach is to posit a hierarchical mixed membership model for analyzing topical content of documents, in which mixing weights are parameterized by observed covariates. 
 
-Specifically, for topic prevalence, the Dirichlet distribution that controls
-the proportion of words in a document attributable to the different topics is replaced with a
-logistic Normal distribution with a mean vector parametrized as a function of the covariates
+In this model, topical prevalence and topical content are specified as a simple generalized linear model on an arbitrary number of document-level covariates, such as news source and time of release, enabling researchers to introduce elements of the experimental design that informed document collection into the model, within a generally applicable framework.
+
+Specifically, for topic prevalence, the Dirichlet distribution that controls the proportion of words in a document attributable to the different topics is replaced with a logistic Normal distribution with a mean vector parametrized as a function of the covariates
 
 The core of the model posits a the document-level 'attention' (proportion allocated) to each topic from a logistic-normal generalized
 linear model based on a vector of document covariates $X_d$.
